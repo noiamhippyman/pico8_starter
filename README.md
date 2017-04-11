@@ -10,6 +10,7 @@ You can now begin working on your game
 
 
 API:
+
 game:new_actor(x,y) - Creates a new actor instance. Returns ActorID
 
 game:update() - Updates any existing actor instance animations
