@@ -6,6 +6,9 @@ Open Pico-8 and type "folder" and press enter. Drag "starter.p8" and "starter_ex
 You can also type "load starter_example" and then "run" to test out the example project which shows you how to instantiate an actor and create some animations.
 
 
+
+
+
 API:
 
 game:new_actor(x,y) - Creates a new actor instance. Returns ActorID
