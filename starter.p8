@@ -2,7 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 8
 __lua__
 function _init()
-	cls()
+	game:init()
 end
 
 function _update()
@@ -15,6 +15,124 @@ end
 
 --hmlib
 game={
+	mouse={
+		enabled=true,
+		x=0,
+		y=0,
+		lmbwait=false,
+		mmbwait=false,
+		rmbwait=false,
+		--mouse press
+		lmbp=false,
+		mmbp=false,
+		rmbp=false,
+		--mouse down
+		lmb=false,
+		mmb=false,
+		rmb=false,
+		--mouse release
+		lmbr=false,
+		mmbr=false,
+		rmbr=false,
+		bttn=function(self,index)
+			if (not self.enabled) return false
+			local mousestate=stat(34)
+			if (index==0) then
+				--lmb
+				return band(mousestate,1)==1
+			elseif (index==1) then
+				--mmb
+				return band(mousestate,4)==4
+			else
+				--rmb
+				return band(mousestate,2)==2
+			end
+		end,--bttn()
+		update=function(self)
+			self.x=stat(32)
+			self.y=stat(33)
+			self.lmb=self:bttn(0)
+			self.mmb=self:bttn(1)
+			self.rmb=self:bttn(2)
+			if (self.lmb) then
+				if (self.lmbr) then
+					self.lmbr=false
+				end
+				if (not self.lmbp) then
+					if (not self.lmbwait) then
+						self.lmbp=true
+						self.lmbwait=true
+					end--if(not lmbwait)
+				else--if(not lmbp)
+					self.lmbp=false
+				end--if(not lmbp)
+			else--if(lmb)
+				if (self.lmbp) then
+					self.lmbp=false
+				end
+				if (not self.lmbr) then
+					if (self.lmbwait) then
+						self.lmbr=true
+						self.lmbwait=false
+					end
+				else--if(not lmbr)
+					self.lmbr=false
+				end
+			end--if(lmb)
+			
+			if (self.mmb) then
+				if (self.mmbr) then
+					self.mmbr=false
+				end
+				if (not self.mmbp) then
+					if (not self.mmbwait) then
+						self.mmbp=true
+						self.mmbwait=true
+					end--if(not mmbwait)
+				else--if(not mmbp)
+					self.mmbp=false
+				end--if(not mmbp)
+			else--if(mmb)
+				if (self.mmbp) then
+					self.mmbp=false
+				end
+				if (not self.mmbr) then
+					if (self.mmbwait) then
+						self.mmbr=true
+						self.mmbwait=false
+					end
+				else--if(not mmbr)
+					self.mmbr=false
+				end
+			end--if(mmb)
+			
+			if (self.rmb) then
+				if (self.rmbr) then
+					self.rmbr=false
+				end
+				if (not self.rmbp) then
+					if (not self.rmbwait) then
+						self.rmbp=true
+						self.rmbwait=true
+					end--if(not rmbwait)
+				else--if(not rmbp)
+					self.rmbp=false
+				end--if(not rmbp)
+			else--if(rmb)
+				if (self.rmbp) then
+					self.rmbp=false
+				end
+				if (not self.rmbr) then
+					if (self.rmbwait) then
+						self.rmbr=true
+						self.rmbwait=false
+					end
+				else--if(not rmbr)
+					self.rmbr=false
+				end
+			end--if(rmb)
+		end--update
+	},
 	actors={},
 	max_actors=128,
 	background_color=5,
@@ -69,7 +187,12 @@ game={
 		return depthtable
 	end,--sortactors
 	
+	init=function(self)
+		if (self.mouse.enabled) poke(0x5f2d,1)
+	end,--init
+	
 	update=function(self)
+		if (self.mouse.enabled)	self.mouse:update()
 		foreach(self.actors,function(a) a:update() end)
 	end,--update
 	
