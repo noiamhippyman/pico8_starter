@@ -19,6 +19,28 @@ game:render() - Renders any existing actors instances to the screen
 
 game.background_color - Sets the color of the screens background
 
+game.mouse.enabled - Turn mouse support off/on
+
+game.mouse.x,game.mouse.y - Mouse position
+
+game.mouse.lmbp - Left mouse pressed
+
+game.mouse.lmb - Left mouse held
+
+game.mouse.lmbr - Left mouse released
+
+game.mouse.mmbp - Middle mouse pressed
+
+game.mouse.mmb - Middle mouse held
+
+game.mouse.mmbr - Middle mouse released
+
+game.mouse.rmbp - Right mouse pressed
+
+game.mouse.rmb - Right mouse held
+
+game.mouse.rmbr - Right mouse released
+
 new_anim(start,length) - Creates an animation to store in actor anims table
 
 index_from_2d(x,y,row) - Finds index in 1D array from 2D coordinates. row is the width of the 2D area
