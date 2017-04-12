@@ -1,7 +1,7 @@
 # Hippyman's Pico-8 Starter Project
 This is a good generic starting point for any Pico-8 game project.
 
-Usage:
+#### Usage
 Open Pico-8 and type "folder" and press enter. Drag "starter.p8" and "starter_demo.p8" into your projects folder. Type "load starter" into Pico-8 and press enter. Type "save 'gamename'" where 'gamename' is whatever you want. You can now begin working on your game.
 You can also type "load starter_demo" and then "run" to test out the example project.
 
