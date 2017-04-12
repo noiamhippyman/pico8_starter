@@ -47,7 +47,7 @@ function _init()
 	--[[create an actor and give
 	it some animations]]
 	for i=1,4 do
-		local a=game:new_actor((i-1)*8,119)
+		local a=game:new_actor(119-(i-1)*8,119)
 		a.anims[1]=new_anim(6,4)
 		a.imgspd=1/i
 	end
@@ -92,6 +92,10 @@ function _draw()
 	if (game.mouse.rmbp) circfill(26,21,2,8)
 	if (game.mouse.rmb) circfill(34,21,2,10)
 	if (game.mouse.rmbr) circfill(42,21,2,11)
+	
+	--print debug info
+	str="mem:"..stat(0).."\ncpu:"..stat(1)
+	print(str,1,127-12,7)
 end
 
 --hmlib
