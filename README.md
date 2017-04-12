@@ -45,7 +45,9 @@ game:new_actor(x,y) - Creates a new actor instance. Returns ActorID
 
 actor.x,actor.y - Actor position
 
-actor.img - Actors current sprite
+actor.img - Actor's current sprite
+
+actor.imgx, actor.imgy - Actor's current sprite origin
 
 actor.imgspd - Speed of animation
 
