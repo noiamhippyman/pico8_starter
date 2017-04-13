@@ -1,5 +1,5 @@
 # Hippyman's Pico-8 Starter Project
-This is a good generic starting point for any Pico-8 game project.
+This is a good generic starting point for any Pico-8 game project.\n http://brandonschmeidler.github.io/pico8_starter
 
 #### Usage
 Open Pico-8 and type "folder" and press enter. Drag "starter.p8" and "starter_demo.p8" into your projects folder. Type "load starter" into Pico-8 and press enter. Type "save 'gamename'" where 'gamename' is whatever you want. You can now begin working on your game.
